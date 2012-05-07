@@ -15,44 +15,49 @@
 <?php
 error_reporting(0);
 session_start();
-if(isset($_SESSION["error"]))
-//if ($_GET["errorusuario"]=="si")
-{
-echo ("<div align='center'>Favor de digitar los datos correctamente</div>");
-}
 ?>
 <div id="main">
 	<img id="beta" src="./images/beta.png" />
     <div id="top"></div>
 	<div id="middle">
 		<h1>Registro</h1>
-        <form action="./agregar_usuario.php" method="post" name="validar">
+        <form action="./agregar_usuario.php" method="post" name="validar" autocomplete="on">
         <div id="boxtop"></div><div id="boxmid">
-    	
+       		<?php 
+				if(isset($_SESSION["error"]))
+				if ($_GET["errorusuario"]=="si"){
+					echo "
+						<div id=\"error\" class=\"section\">
+      						<span>Favor de digitar correctamente los datos.</span>
+            			</div>				
+						";
+			}
+
+			?>
 			<div id="user" class="section">
       				<span>Usuario:</span><input type="text" name="usuario" required />
             </div>
             <br />
             <div id="password" class="section">
-	 				<span>Password:</span><input type="password" name="password" required />
+	 				<span>Password:</span><input type="password" name="password" autocomplete="off" required />
             </div>
                         <br />
             <div id="password2" class="section">
-	 				<span>Repetir Password:</span><input type="password" name="password2" required />
+	 				<span>Repetir Password:</span><input type="password" name="password2" autocomplete="off" required />
             </div>
             <br />
             <div id="email" class="section">
-	 				<span>Correo Electrónico:</span><input type="text" name="email" required />
+	 				<span>Correo Electrónico:</span><input type="email" name="email" required />
             </div>
             <br />
           	<div id="captcha" class="section">
             
-	 				<span>Captcha:</span><input type="text" name="code" required />
+	 				<span>Captcha:</span><input type="text" name="code" autocomplete="off" required />
              
             </div>	
             <br />
             <div id="captcha2">
-            	<img src="captcha.php" border="0" />
+            	<img src="./captcha.php" border="0" />
             </div>
         </div>
         <div id="boxbot"></div>
