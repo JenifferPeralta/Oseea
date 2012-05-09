@@ -1,4 +1,8 @@
-Oseea
+﻿Oseea
 =====
 
-Proyecto de página web para subir archivos online.
+Proyecto de página web para subir archivos online. Integrantes ARTURO HEREDIA MARQUEZ
+ CASTILLO FIGUEROA EDUARDO 
+FLORES ALONSO ENRIQUE
+ MORALES BENDER SAMUEL
+ AVILA DOMINGUEZ LUIS
