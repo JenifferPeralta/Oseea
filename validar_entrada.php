@@ -6,15 +6,24 @@
 </head>
 
 <?php
+error_reporting();
 include("conex.phtml");
 $link=Conectarse();
-$consulta="SELECT USUARIO,PASSWORD FROM EMPLEADOS WHERE USUARIO='ADMINISTRADOR'";
+$Usuario=$_POST["usuario"];
+$consulta="SELECT NOMBRE,PASSWORD FROM usuarios WHERE NOMBRE='".$Usuario."'";
 $resultado = mysql_query( $consulta, $link );
 while ($row = @mysql_fetch_array($resultado)){
-if($_POST['Pass']==$row["PASSWORD"]){}
-else
-{header("Location: Inicion.php");}
+if($_POST['password']!=$row["PASSWORD"]){
+session_start();
+  session_name("autentificado");
+	$_SESSION["autentificado"]="SI";
+	$_SESSION["usuario"]=$row["NOMBRE"];
+	echo ("Si entro");
+	header("Location: index.php ");
+	}
+	
 }
+header("Location: login.php");
 ?>
 <body>
 </body>
