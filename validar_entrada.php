@@ -6,23 +6,26 @@
 </head>
 
 <?php
-error_reporting();
+error_reporting(0);
 include("conex.phtml");
 $link=Conectarse();
 $Usuario=$_POST["usuario"];
 $consulta="SELECT NOMBRE,PASSWORD FROM usuarios WHERE NOMBRE='".$Usuario."'";
 $resultado = mysql_query( $consulta, $link );
 while ($row = @mysql_fetch_array($resultado)){
-if($_POST['password']!=$row["PASSWORD"]){
-session_start();
-  session_name("autentificado");
+if($_POST['password']==$row["PASSWORD"]){
+	
+	session_start();
+	session_name("autentificado");
 	$_SESSION["autentificado"]="SI";
 	$_SESSION["usuario"]=$row["NOMBRE"];
-	echo ("Si entro");
-	header("Location: index.php ");
-	}
-	
+    }
 }
+
+if(isset($_SESSION["usuario"]))
+header("Location: index.php");
+
+else
 header("Location: login.php");
 ?>
 <body>
