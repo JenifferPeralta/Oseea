@@ -7,12 +7,24 @@
 </head>
 <body>
 <?php
-session_start();
-session_name("autentificado");
-$_SESSION["autentificado"]="SI";
+	error_reporting(0);
+	session_start();
+	echo $_SESSION["usuario"];
+		if($_SESSION["autentificado"]=="SI")
+	{		
+		echo "<div id=\"userpanel\">";
+		$a=$_SESSION['usuario'];
+		echo "<FONT color=\"#0000CC\"> HOLA $a </font>";
+		echo "| <a href=\"Cerrar_Sesion.php\">Cerrar_Sesion</a>";
+	}
+	
+	else
+	{
+		echo "<div id=\"userpanel\">";
+		echo "<a href=\"login.php\">Login</a> | <a href=\"registro.php\">Registro</a>";
+	}
+	
 ?>
-<div id="userpanel">
-	<a href="login.php">Login</a> | <a href="registro.php">Registro</a>
 </div>
 <div id="logo">
   <img src="./images/logo.png" />
