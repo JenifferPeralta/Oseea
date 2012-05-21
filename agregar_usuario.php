@@ -7,7 +7,7 @@
 </head>
 
 <?php
-
+error_reporting(0);
 $Nombre = $_POST['usuario'];
 $Password = $_POST['password'];
 $Password2 = $_POST['password2'];
@@ -15,12 +15,7 @@ $Email = $_POST['email'];
 
 if($Password != $Password2)
 {
-session_start();
-$_SESSION["error"]=1;
-echo "<script type=\"text/javascript\"> history.go(-1);</script>";
-exit;
-//session_destroy();
-//header("location: registro.php?errorusuario=si");
+header("location: registro.php?errorusuario=1");
 }
 else
 {
@@ -35,7 +30,7 @@ First encrypt the key passed by the form, then compare it to the already encrypt
 if( md5( $_POST[ 'code' ] ) != $_SESSION[ 'key' ] ) {
 
        session_destroy();
-	   header("location: registro.php?errorusuario=si");
+	   header("location: registro.php?errorusuario=2");
 
 } 
 else {
@@ -47,6 +42,10 @@ include ("conex.phtml");
 $link=Conectarse();
 $consulta="INSERT INTO USUARIOS(NOMBRE,PASSWORD,CORREO) VALUES ('$Nombre','$Password','$Email')";
 $resultado = mysql_query( $consulta, $link ) or die( mysql_error() );
+	session_name("autentificado");
+	$_SESSION["autentificado"]="SI";
+	$_SESSION["usuario"]=$_POST["usuario"];
+	header ("Location: index.php");
 }
 }
 ?>
