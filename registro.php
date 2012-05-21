@@ -6,58 +6,61 @@
 <title>Oseea : Registro</title>
 </head>
 <body>
+<?php 
+error_reporting(0);
+session_start();
+if($_GET["errorusuario"]==1)
+{
+echo ("<script language='JavaScript'> alert('Password Incorrecto');</script>");
+echo ("<div align='center'>Favor de digitar los datos correctamente</div>");
+$a="12";
+}
+else 
+if($_GET["errorusuario"]==2)
+{
+echo ("<script language='JavaScript'> alert('Escribir correctamente la serie de letras del final');</script>");
+echo ("<div align='center'>Favor de digitar los datos correctamente</div>");
+}
+?>
+
 <div id="userpanel">
 	<a href="login.php">Login</a> | <a href="registro.php">Registro</a>
 </div>
 <div id="logo">
 		<a href= "./index.php"><img src="./images/logo.png" alt="Da click para regresar al menú principal" /></a>
 	</div>
-<?php
-error_reporting(0);
-session_start();
-?>
-<div id="main">
+	<div id="main">
 	<img id="beta" src="./images/beta.png" />
     <div id="top"></div>
 	<div id="middle">
 		<h1>Registro</h1>
-        <form action="./agregar_usuario.php" method="post" name="validar" autocomplete="on">
+        <form action="./agregar_usuario.php" method="post" name="validar">
         <div id="boxtop"></div><div id="boxmid">
-       		<?php 
-				if(isset($_SESSION["error"]))
-				if ($_GET["errorusuario"]=="si"){
-					echo "
-						<div id=\"error\" class=\"section\">
-      						<span>Favor de digitar correctamente los datos.</span>
-            			</div>				
-						";
-			}
-
-			?>
+    	
 			<div id="user" class="section">
-      				<span>Usuario:</span><input type="text" name="usuario" required />
-            </div>
+            <span>Usuario:</span><input name="usuario" type="text" id="usuario" required/>
+</div>
             <br />
             <div id="password" class="section">
-	 				<span>Password:</span><input type="password" name="password" autocomplete="off" required />
+	 				<span>Password:</span><input type="password" name="password" required />
             </div>
                         <br />
             <div id="password2" class="section">
-	 				<span>Repetir Password:</span><input type="password" name="password2" autocomplete="off" required />
+	 				<span>Repetir Password:</span><input type="password" name="password2" required />
             </div>
             <br />
             <div id="email" class="section">
-	 				<span>Correo Electrónico:</span><input type="email" name="email" required />
+	 				<span>Correo Electrónico:</span><input type="text" name="email" required />
             </div>
             <br />
           	<div id="captcha" class="section">
             
-	 				<span>Captcha:</span><input type="text" name="code" autocomplete="off" required />
+	 				<span>Captcha:</span><input type="text" name="code" required />
              
             </div>	
             <br />
             <div id="captcha2">
-            	<img src="./captcha.php" border="0" />
+            	<img src="captcha.php" border="0" />
             </div>
         </div>
         <div id="boxbot"></div>
@@ -69,6 +72,7 @@ session_start();
         </div>
         <br />
         </form>
+
    	</div>
     <div id="bottom"></div>
 </div>
