@@ -19,7 +19,7 @@
     }
 
     $usuario=$_POST["usuario"];
-    $query="SELECT NOMBRE,PASSWORD FROM usuarios WHERE NOMBRE='".$usuario."'";
+    $query="SELECT NOMBRE, PASSWORD FROM usuarios WHERE NOMBRE='".$usuario."'";
     $resultado = dbquery($query);
 
     while ($row = @mysql_fetch_array($resultado)){

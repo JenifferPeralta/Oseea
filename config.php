@@ -7,7 +7,6 @@
     $pass = "";
     $database = "hosting";
     $server = "localhost";
-    $tabla = "usuarios";
     
     //Ruta de la página
     $web_root = "http://localhost/Oseea/";

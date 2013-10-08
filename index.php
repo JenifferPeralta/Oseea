@@ -37,6 +37,7 @@
         }
         //Tabla
         //Crear tabla si no existe
+        $tabla = "usuarios";
         if (!table_exists($tabla, $database)){
             echo "No se encontró tabla \"$tabla\" en la Base de Datos. Creando Tabla.<br />";
             $sql = "CREATE TABLE IF NOT EXISTS $tabla
@@ -59,7 +60,7 @@
         {		
             echo "<div id=\"userpanel\">";
             $usuario = $_SESSION['usuario'];
-            echo "Hola $usuario";
+            echo "<a href=\"menuUsuario.php\">Hola $usuario</a>";
             echo "| <a href=\"cerrar_sesion.php\">Cerrar_Sesion</a>";
             echo '</div>';
         } else {
@@ -107,6 +108,6 @@
     </div>
     <div id="pie"><a href=""
     onClick="window.open('terminos.html','Términos y Condiciones', 'width=640, height=480');
-    return false">Términos y condiciones</a> | <a href="mailto:deozamox@gmail.com&subject=Oseea">Contacto</a></div>
+    return false">Términos y condiciones</a> | <a href="mailto:deozamox@gmail.com&subject=Oseea" />Contacto</a></div>
 </body>
 </html>
